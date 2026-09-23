@@ -1,0 +1,281 @@
+/* ==========================================================================
+   VieiraTechnology — estilos do site
+   Ordem: fontes, tokens, base, cabeçalho, botões, hero, dores, serviços,
+          processo, orçamento, compromissos, FAQ, contato, barra fixa,
+          rodapé, 404, responsivo, acessibilidade.
+   ========================================================================== */
+
+/* --- fontes (locais, sem Google Fonts) ---------------------------------- */
+@font-face{
+  font-family:"Plex Sans";
+  src:url("../fonts/ibm-plex-sans.woff2") format("woff2-variations"),
+      url("../fonts/ibm-plex-sans.woff2") format("woff2");
+  font-weight:100 700;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Plex Mono";
+  src:url("../fonts/ibm-plex-mono-400.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Plex Mono";
+  src:url("../fonts/ibm-plex-mono-600.woff2") format("woff2");
+  font-weight:600;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* --- tokens ------------------------------------------------------------- */
+:root{
+  --black:#000;
+  --surface:#0e0e0e;
+  --surface-2:#141414;
+  --line:#1f1f1f;
+  --ink:#f2f2f2;
+  --muted:#a8a8a8;
+  --dim:#707070;
+  --icon:#666;
+
+  /* as quatro cores vêm dos parênteses do cover: code(), sleep(), eat(), repeat() */
+  --blue:#6892f3;
+  --green:#64c954;
+  --yellow:#e4df58;
+  --red:#e95d6b;
+
+  --sans:"Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pad:clamp(20px,5vw,40px);
+}
+
+/* --- base --------------------------------------------------------------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+.wrap{width:100%;max-width:1060px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{padding:clamp(56px,9vw,100px) 0;border-top:1px solid var(--line)}
+
+h1,h2,h3{line-height:1.2;margin:0;font-weight:600;letter-spacing:-.015em}
+h2{font-size:clamp(25px,4.2vw,34px)}
+h3{font-size:19px}
+p{margin:0}
+.lead{color:var(--muted);font-size:clamp(17px,2.2vw,19px)}
+.sec-head{max-width:640px;margin-bottom:clamp(30px,5vw,48px);display:grid;gap:14px}
+.narrow{max-width:62ch}
+.mt-14{margin-top:14px}
+.mt-22{margin-top:22px}
+.mt-28{margin-top:28px}
+
+/* --- cabeçalho ---------------------------------------------------------- */
+header{
+  position:sticky;top:0;z-index:30;
+  background:rgba(0,0,0,.9);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.mark{order:1;font-weight:600;letter-spacing:-.01em;text-decoration:none;font-size:17px}
+.mark span{color:var(--dim)}
+.nav{order:2;display:flex;gap:24px}
+.nav a{color:var(--muted);text-decoration:none;font-size:15px}
+.nav a:hover{color:var(--ink)}
+.bar-actions{order:3;display:flex;align-items:center;gap:10px}
+
+.nav-toggle{
+  display:none;width:40px;height:40px;padding:0;
+  align-items:center;justify-content:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  color:var(--ink);cursor:pointer;
+}
+.nav-toggle svg{width:22px;height:22px;fill:currentColor}
+.nav-toggle .i-close{display:none}
+.nav-toggle[aria-expanded="true"] .i-menu{display:none}
+.nav-toggle[aria-expanded="true"] .i-close{display:block}
+
+/* --- botões ------------------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:48px;padding:13px 22px;border-radius:6px;
+  text-decoration:none;font-weight:500;font-size:16px;
+  border:1px solid var(--line);color:var(--ink);background:var(--surface);
+}
+.btn:hover{border-color:#333}
+.btn-main{background:var(--ink);color:#000;border-color:var(--ink)}
+.btn-main:hover{background:#fff;border-color:#fff}
+.btn-sm{min-height:0;padding:9px 16px;font-size:15px}
+.btn svg{width:19px;height:19px;fill:currentColor;flex:none}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* --- hero --------------------------------------------------------------- */
+.hero{padding-top:clamp(50px,8vw,92px);padding-bottom:clamp(44px,7vw,80px);border-top:0}
+.hero h1{font-size:clamp(31px,5.6vw,50px);max-width:19ch}
+.hero .lead{margin-top:22px;max-width:60ch}
+.trust{
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;
+  color:var(--dim);font-size:15px;
+}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--dim)}
+
+.calls{
+  display:flex;flex-wrap:wrap;gap:10px 26px;
+  margin-top:clamp(38px,6vw,62px);
+  padding-top:clamp(24px,4vw,34px);
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:clamp(15px,2.4vw,19px);color:var(--dim);
+}
+.calls a{text-decoration:none;white-space:nowrap}
+.calls a:hover{color:var(--ink)}
+.p-blue{color:var(--blue)}
+.p-green{color:var(--green)}
+.p-yellow{color:var(--yellow)}
+.p-red{color:var(--red)}
+
+/* --- dores -------------------------------------------------------------- */
+.pains{display:grid;gap:0;border-top:1px solid var(--line)}
+.pains li{
+  list-style:none;
+  color:var(--ink);font-size:clamp(17px,2.3vw,19px);
+  padding:20px 0 20px 30px;border-bottom:1px solid var(--line);position:relative;
+}
+.pains li::before{
+  content:"";position:absolute;left:0;top:34px;width:14px;height:1px;background:var(--dim);
+}
+.pains{margin:0;padding:0}
+
+/* --- serviços ----------------------------------------------------------- */
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:28px 26px 26px;display:flex;flex-direction:column;
+}
+.card>svg{width:34px;height:34px;fill:var(--icon);display:block}
+.card .call{font-family:var(--mono);font-size:16px;color:var(--dim);margin:18px 0 10px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:16px}
+.card .note{margin-top:14px;color:var(--dim);font-size:15px}
+.card-link{
+  margin-top:auto;padding-top:20px;
+  font-size:15px;font-weight:500;text-decoration:none;color:var(--ink);
+}
+.card-link:hover{color:#fff;text-decoration:underline}
+
+/* --- processo ----------------------------------------------------------- */
+.steps{display:grid;gap:24px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:start}
+.step-n{
+  font-family:var(--mono);font-size:15px;color:var(--dim);
+  border:1px solid var(--line);border-radius:6px;
+  height:38px;display:grid;place-items:center;
+}
+.step h3{margin-bottom:6px}
+.step p{color:var(--muted);font-size:16px}
+.step .free{color:var(--green)}
+
+/* --- orçamento e compromissos ------------------------------------------- */
+.two{display:grid;gap:40px;grid-template-columns:1.1fr .9fr;align-items:start}
+.factors,.send{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
+.factors li,.send li{color:var(--muted);font-size:16px;padding-left:22px;position:relative}
+.factors li::before,.send li::before{
+  content:"";position:absolute;left:0;top:11px;width:9px;height:1px;background:var(--dim);
+}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:26px}
+.panel+.panel{margin-top:14px}
+.panel h3{margin-bottom:16px}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.panel li{color:var(--muted);font-size:16px;padding-left:26px;position:relative}
+.panel li::before{position:absolute;left:0;top:-1px;font-family:var(--mono)}
+.panel-yes li::before{content:"✓";color:var(--green)}
+.panel-no li::before{content:"×";color:var(--red)}
+
+/* --- FAQ (sem JS: details/summary nativo) ------------------------------- */
+.faq{display:grid;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  padding:20px 40px 20px 0;position:relative;
+  font-size:17px;font-weight:500;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:6px;top:18px;
+  font-family:var(--mono);font-size:20px;color:var(--dim);
+}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--muted);font-size:16px;padding:0 0 22px;max-width:70ch}
+
+/* --- tecnologias -------------------------------------------------------- */
+.stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{
+  font-family:var(--mono);font-size:14px;color:var(--muted);
+  border:1px solid var(--line);border-radius:5px;padding:7px 12px;
+}
+
+/* --- contato ------------------------------------------------------------ */
+.contact-grid{display:grid;gap:40px;grid-template-columns:1fr 1fr}
+.meta{margin-top:24px;color:var(--dim);font-size:15px;display:grid;gap:6px}
+.hint{color:var(--dim);font-size:15px;margin-top:18px}
+
+/* --- barra fixa do celular ---------------------------------------------- */
+.sticky-cta{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(0,0,0,.94);border-top:1px solid var(--line);
+  backdrop-filter:blur(8px);
+  gap:10px;align-items:center;
+}
+.sticky-cta .btn{flex:1}
+.sticky-close{
+  width:44px;height:44px;flex:none;
+  background:none;border:1px solid var(--line);border-radius:6px;
+  color:var(--dim);cursor:pointer;font-size:18px;line-height:1;
+}
+
+/* --- rodapé ------------------------------------------------------------- */
+footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--dim);font-size:14px}
+
+/* --- página 404 --------------------------------------------------------- */
+.page-404{min-height:70vh;display:grid;align-content:center;gap:18px;padding:80px 0}
+.page-404 .call{font-family:var(--mono);color:var(--dim);font-size:clamp(18px,4vw,24px)}
+
+/* --- responsivo --------------------------------------------------------- */
+@media (max-width:840px){
+  .bar{flex-wrap:wrap;height:auto;padding:12px 0}
+  .bar-actions{order:2;margin-left:auto}
+  .nav{
+    order:3;flex-basis:100%;flex-wrap:wrap;gap:14px 20px;
+    margin-top:10px;padding-top:12px;border-top:1px solid var(--line);
+  }
+  .nav-toggle{display:inline-flex}
+  /* com JS o menu começa fechado; sem JS os links ficam sempre visíveis */
+  .js .nav{display:none}
+  .js .nav.is-open{display:flex}
+  .two,.contact-grid{grid-template-columns:1fr;gap:30px}
+  .js .sticky-cta.is-visible{display:flex}
+}
+@media (min-width:841px){
+  .nav-toggle{display:none !important}
+  .sticky-cta{display:none !important}
+}
+
+/* --- acessibilidade ----------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+}
